@@ -30,12 +30,24 @@ function playKittyVideo() {
   var videoSource = document.getElementById("video-source");
 
   // Укажите путь к вашему видео
-  videoSource.src = "cat-video.mp4"; // Замените на путь к вашему видео
-  videoElement.load();
-  videoElement.style.display = "block"; // Показать видео
-  videoElement.play();
+  videoSource.src = "cat-video.mp4"; // Замените на путь к вашему видео (например, URL или локальный путь)
   
-  // Скрыть видео после его окончания
+  // Загружаем видео
+  videoElement.load();
+
+  // Проверим, загружается ли видео
+  videoElement.onerror = function() {
+    alert("Ошибка при загрузке видео.");
+  };
+
+  // Показываем видео
+  videoElement.style.display = "block"; 
+  videoElement.play().catch(function(error) {
+    console.error("Ошибка при воспроизведении видео: ", error);
+    alert("Не удалось воспроизвести видео.");
+  });
+  
+  // Скрываем видео после окончания
   videoElement.onended = function() {
     videoElement.style.display = "none";
   };
