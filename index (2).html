@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Котик Бот</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .chat-box {
+      border: 1px solid #ddd;
+      padding: 10px;
+      width: 300px;
+      height: 400px;
+      overflow-y: auto;
+    }
+    .user-message, .bot-message {
+      margin: 5px;
+    }
+    .user-message {
+      text-align: right;
+    }
+    .bot-message {
+      text-align: left;
+      color: green;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 5px;
+    }
+    button {
+      width: 15%;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Котик Бот</h2>
+  <div class="chat-box" id="chat-box"></div>
+  <input type="text" id="user-input" placeholder="Напишите что-нибудь..." />
+  <button onclick="sendMessage()">Отправить</button>
+
+  <script>
+    function sendMessage() {
+      var userInput = document.getElementById("user-input").value;
+      if (userInput.trim() !== "") {
+        // Показать сообщение пользователя в чате
+        addMessage(userInput, 'user');
+        
+        // Ответ котика
+        setTimeout(function() {
+          addMessage('Мяу!', 'bot');
+        }, 1000); // Задержка перед ответом
+      }
+      document.getElementById("user-input").value = ""; // Очистить поле ввода
+    }
+
+    function addMessage(message, sender) {
+      var messageDiv = document.createElement("div");
+      messageDiv.classList.add(sender + '-message');
+      messageDiv.textContent = message;
+      document.getElementById("chat-box").appendChild(messageDiv);
+      
+      // Прокручиваем чат вниз
+      document.getElementById("chat-box").scrollTop = document.getElementById("chat-box").scrollHeight;
+    }
+  </script>
+</body>
+</html>
