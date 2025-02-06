@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Котик Бот</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> <!-- Подключаем стили -->
 </head>
 <body>
-  <div class="chat-container">
-    <h1>Котик Бот</h1>
-    <div class="chat-box" id="chat-box"></div>
-    <div class="input-container">
-      <input type="text" id="user-input" placeholder="Напишите что-нибудь..." />
-      <button onclick="sendMessage()">Отправить</button>
-    </div>
-  </div>
-  
-  <!-- Элемент видео -->
+
+  <h2>😺 Котик Бот</h2>
+
+  <!-- Видео сверху чата -->
   <div class="video-container">
-    <video id="kitty-video" controls>
-      <source id="video-source" src="" type="video/mp4">
+    <video id="kitty-video" muted>
+      <source src="your-video-path.mp4" type="video/mp4">
       Ваш браузер не поддерживает видео.
     </video>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Чат -->
+  <div class="chat-container" id="chat-box"></div>
+
+  <input type="text" id="user-input" placeholder="Напишите что-нибудь..." />
+  <button onclick="sendMessage()">Отправить</button>
+
+  <script src="script.js"></script> <!-- Подключаем JS -->
 </body>
 </html>
