@@ -41,30 +41,7 @@
   <input type="text" id="user-input" placeholder="Напишите что-нибудь..." />
   <button onclick="sendMessage()">Отправить</button>
 
-  <script>
-    function sendMessage() {
-      var userInput = document.getElementById("user-input").value;
-      if (userInput.trim() !== "") {
-        // Показать сообщение пользователя в чате
-        addMessage(userInput, 'user');
-        
-        // Ответ котика (всегда "Мяу!")
-        setTimeout(function() {
-          addMessage('Мяу!', 'bot');
-        }, 1000); // Задержка перед ответом
-      }
-      document.getElementById("user-input").value = ""; // Очистить поле ввода
-    }
-
-    function addMessage(message, sender) {
-      var messageDiv = document.createElement("div");
-      messageDiv.classList.add(sender + '-message');
-      messageDiv.textContent = message;
-      document.getElementById("chat-box").appendChild(messageDiv);
-      
-      // Прокручиваем чат вниз
-      document.getElementById("chat-box").scrollTop = document.getElementById("chat-box").scrollHeight;
-    }
-  </script>
+  <!-- Подключение script.js -->
+  <script src="script.js"></script>
 </body>
 </html>
