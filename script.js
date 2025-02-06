@@ -1,30 +1,42 @@
-// Функция для отправки сообщения
 function sendMessage() {
   var userInput = document.getElementById("user-input").value;
-
   if (userInput.trim() !== "") {
-    // Добавляем сообщение пользователя в чат
+    // Показать сообщение пользователя в чате
     addMessage(userInput, 'user');
     
-    // Задержка перед ответом котика (1 секунда)
+    // Ответ котика
     setTimeout(function() {
-      addMessage('Мяу!', 'bot');  // Ответ котика "Мяу!"
-    }, 1000);
+      addMessage('Мяу!', 'bot');
+      
+      // Проиграть видео
+      playKittyVideo();
+    }, 1000); // Задержка перед ответом
   }
-  
-  // Очищаем поле ввода
-  document.getElementById("user-input").value = "";
+  document.getElementById("user-input").value = ""; // Очистить поле ввода
 }
 
-// Функция для добавления сообщения в чат
 function addMessage(message, sender) {
   var messageDiv = document.createElement("div");
   messageDiv.classList.add(sender + '-message');
   messageDiv.textContent = message;
-  
-  // Добавляем сообщение в чат
   document.getElementById("chat-box").appendChild(messageDiv);
   
-  // Прокручиваем чат вниз, чтобы видеть последнее сообщение
+  // Прокручиваем чат вниз
   document.getElementById("chat-box").scrollTop = document.getElementById("chat-box").scrollHeight;
+}
+
+function playKittyVideo() {
+  var videoElement = document.getElementById("kitty-video");
+  var videoSource = document.getElementById("video-source");
+
+  // Укажите путь к вашему видео
+  videoSource.src = "cat-video.mp4"; // Замените на путь к вашему видео
+  videoElement.load();
+  videoElement.style.display = "block"; // Показать видео
+  videoElement.play();
+  
+  // Скрыть видео после его окончания
+  videoElement.onended = function() {
+    videoElement.style.display = "none";
+  };
 }
